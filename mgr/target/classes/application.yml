@@ -1,0 +1,15 @@
+spring:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/mybatis?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+    username: root
+    password: root
+    
+  thymeleaf: 
+    prefix: /pages/
+    suffix: .html
+ 
+logging:
+   level:
+     com.sylm.mapper: debug

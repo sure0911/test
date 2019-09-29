@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+
+<script src="../js/jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+
+<div>
+	<table>
+		<tr>
+			<td>id</td>
+			<td>姓名</td>
+			<td>密码</td>
+			<td>学号</td>
+			<td>部门</td>
+		</tr>
+	</table>
+	<div id="trBody">
+	
+	</div>
+</div>
+
+
+	
+</body>
+</html>
+
+
+<script>
+	$(document).ready(function() {
+
+		var htmlobj = $.ajax({
+			url : "http://localhost:8080/getUsersRest",async:false
+		});
+
+		console.log("htmlobj.responseText====="+htmlobj.responseText)
+	    var jsonArr = JSON.parse(htmlobj.responseText); //数组   
+	    console.log(jsonArr.length);
+	   
+	    var bodyString = "";
+	    
+	    for(var i = 0; i < jsonArr.length ;i++) {
+			
+			bodyString = bodyString + "<tr><td>"+jsonArr[i].id+"</td><td>"+jsonArr[i].username + "</td><td>" + jsonArr[i].employeeNum + "</td><td>" + jsonArr[i].departmentId + "</td><td><button onclick='del("+jsonArr[i].id+")' >删除</button></td></tr>";
+			
+			
+	    }
+	    
+	    bodyString = "<table>" + bodyString + "</table>";
+	    
+	    document.getElementById("trBody").innerHTML = bodyString;
+	    
+	    /* $.each(json, function (index, item) { 
+	     	alert(99);
+	    }); */
+
+	});
+	
+	function del(id) {
+		$.ajax({
+			url : "http://localhost:8080/userCURD/"+id,
+			type:"DELETE"
+		});
+	}
+</script>
