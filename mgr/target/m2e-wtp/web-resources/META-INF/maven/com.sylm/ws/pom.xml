@@ -20,7 +20,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<mybatisplus.version>3.0.6</mybatisplus.version>
-		<fastjson.version>1.2.47</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<druid.version>1.1.12</druid.version>
 		<bitwalker.version>1.19</bitwalker.version>
 	</properties>
